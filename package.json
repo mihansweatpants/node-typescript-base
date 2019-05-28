@@ -16,8 +16,8 @@
     "module-alias": "^2.2.0"
   },
   "scripts": {
-    "dev": "concurrently -n=ts-node,tslint -c=blue,red \"nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts\" \"yarn lint\" ",
     "build": "tsc -p .",
+    "dev": "concurrently -n=ts-node,tslint -c=blue,red \"nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts\" \"yarn lint\" ",
     "tslint": "tslint -c tslint.json -p tsconfig.json --force",
     "lint": "yarn tslint && onchange 'src/**/*.*' -- yarn tslint"
   },

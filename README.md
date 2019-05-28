@@ -5,7 +5,7 @@
 yarn
 ```
 
-### Run in dev mode (with auto reload)
+### Run in dev mode (auto reload & linting)
 ```
 yarn dev
 ```
