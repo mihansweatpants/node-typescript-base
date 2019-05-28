@@ -4,13 +4,24 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.0.2",
+    "concurrently": "^4.1.0",
     "nodemon": "^1.19.1",
+    "onchange": "^6.0.0",
     "ts-node": "^8.2.0",
+    "tslint": "^5.16.0",
+    "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.4.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "module-alias": "^2.2.0"
+  },
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-    "build": "tsc -p ."
+    "dev": "concurrently -n=ts-node,tslint -c=blue,red \"nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts\" \"yarn lint\" ",
+    "build": "tsc -p .",
+    "tslint": "tslint -c tslint.json -p tsconfig.json --force",
+    "lint": "yarn tslint && onchange 'src/**/*.*' -- yarn tslint"
+  },
+  "_moduleAliases": {
+    "~": "src"
   }
 }
